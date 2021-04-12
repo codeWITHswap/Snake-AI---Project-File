@@ -2,7 +2,7 @@
 
 ## In this project, we are building a snake game from scratch, and implement both basic Reinforcement Learning and Deep Reinforcement Learning techniques to help the snake master the game and get really high scores.
 
-![Check out this gif to see how the agent will get better as it keeps playing:](https://drive.google.com/file/d/1MnOe8JvfhyjQLZEXpKmxDtKR1B8MJKY7/view?usp=sharing)
+___
 
 Important links:
 
