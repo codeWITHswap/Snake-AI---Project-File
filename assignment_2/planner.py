@@ -39,21 +39,6 @@ class MDP:
     def getQ(self, V):
         return np.sum(self.T * (self.R + self. gamma * V.reshape(1, 1, self.nS)), axis=2)
 
-    def solve_belleman(self, policy):
-        T, R = [], []
-        for state in range(self.nS):
-            R.append(self.R[state][policy[state]].reshape((1, self.nS)))
-            T.append(self.T[state][policy[state]].reshape((1, self.nS)))
-
-        T = np.concatenate(T, axis=0)
-        R = np.concatenate(R, axis=0)
-
-        b = (R * T).sum(axis=1)
-        A = np.identity(self.nS) - T * self.gamma
-        V = np.linalg.pinv(A) @ b
-        return V
-
-
 class ValueIteration(MDP):
     def solve(self):
         while True:
