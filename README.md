@@ -39,7 +39,7 @@ I have used a fairly simple reward scheme that can be optimized to improve the p
 * Reward of -100 for crashing  
 
 ### Hyperparameters
-The starting learning rate and &epsilon; parameter for the &epsilon;-greedy policy were kept at 0.5 and 0.01. Upon training, the behaviour of the agent was very noisy without decaying these hyperparameters. With annealing, the performance had become more consistent. The agent has achieved a maximum score of 44. 
+The starting learning rate and &epsilon; parameter for the &epsilon;-greedy policy were kept at 0.5 and 0.01. Upon training, the behaviour of the agent was very noisy without decaying these hyperparameters. With annealing, the performance had become more consistent. The agent has achieved a maximum score of 53. 
 ___
 
 ## Resources
