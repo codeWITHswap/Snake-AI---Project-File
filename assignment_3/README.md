@@ -1,4 +1,4 @@
-# Windy Gridworld solver
+# Windy Gridworld Solver
   
 | Argument    | Description |
 | ----------- | ----------- |
