@@ -39,7 +39,7 @@ I have used a fairly simple reward scheme that can be optimized to improve the p
 * Reward of -100 for crashing  
 
 ### Hyperparameters
-The starting learning rate and &epsilon; parameter for the &epsilon;-greedy policy were kept at 0.5 and 0.01. Upon training, the behaviour of the agent was very noisy without decaying these hyperparameters. With annealing, the performance had become more consistent. The agent has achieved a maximum score of 53. 
+The starting learning rate and &epsilon; parameter for the &epsilon;-greedy policy were kept at 0.5 and 0.01. Upon training, the behaviour of the agent was very noisy without decaying these hyperparameters. With annealing, the performance had become more consistent. The agent was able to achieve a maximum score of 53. 
 
 [Implementing RL on Snake](https://drive.google.com/file/d/1_8GMAZCWGbYJNiU24zqzT8msPWBN6618/view) <br />
 [Training my RL agent on various algorithms over 100 episodes](https://drive.google.com/file/d/1ahQOfrDSjjAFMLAv7c6K8_2KDok4oSEG/view?usp=sharing)
