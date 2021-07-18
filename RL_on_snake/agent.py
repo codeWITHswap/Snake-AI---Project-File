@@ -14,21 +14,9 @@ parser = argparse.ArgumentParser()
 
 class Agent:
     def __init__(self):
-        # state-space representation
-        # bit-0 : reward ahead
-        # bit-1 : reward behind
-        # bit-2 : reward to the right
-        # bit-3 : reward to the left
-        # bit-4 : obstacle ahead
-        # bit-5 : obstacle to the right
-        # bit-6 : obstacle to the left
-        self.states = 128
-
-        # actions
-        # 0 : do nothing
-        # 1 : turn right
-        # 2 : turn left
-        self.actions = 3
+        
+        self.states = 128 # 2^7=128 
+        self.actions = 3 # 3 actions in total
 
         self.snake_game = SnakeGame()
         self.action_value_function = np.zeros((self.states, self.actions))
@@ -134,30 +122,20 @@ class Agent:
                 self.snake_game.snake.direction = Vector2(-1, 0)
 
     def check_termination(self):
-        # exit the game if snake goes outside of the screen
         if not 0 <= self.snake_game.snake.body[0].x < self.snake_game.settings.cell_number:
             return True
         if not 0 <= self.snake_game.snake.body[0].y < self.snake_game.settings.cell_number:
             return True
-
-        # exit the game check if snake collides with itself
         for block in self.snake_game.snake.body[1:]:
             if block == self.snake_game.snake.body[0]:
                 return True
-
         return False
 
     def q_learning_episode(self, gamma=0.9, epsilon=0.01, alpha=0.05):
-        # create a time based user event to move the snake and to check for collisions
         SCREEN_UPDATE = pygame.USEREVENT
-        # this event is triggered every 150ms
         pygame.time.set_timer(SCREEN_UPDATE, 150)
 
         # Reward Scheme
-        # Snake moves towards the fruit : +1
-        # Snake moves away from the fruit : -1
-        # Snake eats the fruit : +10
-        # Snake crashes : -100
         moving_towards_the_fruit_reward = +1
         moving_away_from_the_fruit_reward = -1
         eating_the_fruit_reward = +10
@@ -172,14 +150,9 @@ class Agent:
 
             old_head_fruit_distance = Vector2.magnitude(
                 self.snake_game.snake.body[0] - self.snake_game.fruit.position)
-            # if Vector2.dot(self.snake_game.snake.direction, self.snake_game.fruit.position - self.snake_game.snake.body[0]) > 0:
-            # 	reward = moving_towards_the_fruit_reward
-            # else:
-            #	reward = moving_away_from_the_fruit_reward
-
             if self.snake_game.snake.new_block == True:
                 reward = eating_the_fruit_reward
-
+                
             self.snake_game.snake.move_snake()
         
             next_state = self.get_state()
@@ -201,12 +174,10 @@ class Agent:
 
             if self.check_termination() == True:
                 break
-
-            # color the screen RGB = (175, 210, 70)
+                
             self.snake_game.screen.fill(self.snake_game.settings.screen_color)
             self.snake_game.draw_elements()
 
-            # update the screen
             pygame.display.update()
 
             self.snake_game.clock.tick(60)  # set the maximum fps = 60
@@ -219,16 +190,10 @@ class Agent:
         return score
 
     def sarsa_episode(self, gamma=0.9, epsilon=0.01, alpha=0.05):
-        # create a time based user event to move the snake and to check for collisions
         SCREEN_UPDATE = pygame.USEREVENT
-        # this event is triggered every 150ms
         pygame.time.set_timer(SCREEN_UPDATE, 150)
 
         # Reward Scheme
-        # Snake moves towards the fruit : +1
-        # Snake moves away from the fruit : -1
-        # Snake eats the fruit : +10
-        # Snake crashes : -100
         moving_towards_the_fruit_reward = +1
         moving_away_from_the_fruit_reward = -1
         eating_the_fruit_reward = +10
@@ -243,11 +208,7 @@ class Agent:
 
             old_head_fruit_distance = Vector2.magnitude(
                 self.snake_game.snake.body[0] - self.snake_game.fruit.position)
-            # if Vector2.dot(self.snake_game.snake.direction, self.snake_game.fruit.position - self.snake_game.snake.body[0]) > 0:
-            #   reward = moving_towards_the_fruit_reward
-            # else:
-            #   reward = moving_away_from_the_fruit_reward
-
+            
             if self.snake_game.snake.new_block == True:
                 reward = eating_the_fruit_reward
 
@@ -272,11 +233,9 @@ class Agent:
             if self.check_termination() == True:
                 break
 
-            # color the screen RGB = (175, 210, 70)
             self.snake_game.screen.fill(self.snake_game.settings.screen_color)
             self.snake_game.draw_elements()
 
-            # update the screen
             pygame.display.update()
 
             self.snake_game.clock.tick(60)  
@@ -296,7 +255,6 @@ class Agent:
         return policy
 
     def expected_sarsa_episode(self, gamma=0.9, epsilon=0.01, alpha=0.05):
-        # create a time based user event to move the snake and to check for collisions
         SCREEN_UPDATE = pygame.USEREVENT
 
         pygame.time.set_timer(SCREEN_UPDATE, 20)
@@ -342,7 +300,6 @@ class Agent:
             self.snake_game.screen.fill(self.snake_game.settings.screen_color)
             self.snake_game.draw_elements()
 
-            # update the screen
             pygame.display.update()
 
             self.snake_game.clock.tick(60)  
@@ -368,14 +325,12 @@ class Agent:
             if self.check_termination() == True:
                 break
 
-            # color the screen RGB = (175, 210, 70)
             self.snake_game.screen.fill(self.snake_game.settings.screen_color)
             self.snake_game.draw_elements()
 
-            # update the screen
             pygame.display.update()
 
-            self.snake_game.clock.tick(10)  # set the playing fps = 10
+            self.snake_game.clock.tick(10)  
 
         score = len(self.snake_game.snake.body) - 3
         print("Score:", score)
