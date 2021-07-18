@@ -1,5 +1,5 @@
 # Snake AI
-This repository contains the code for my WnCC Summer of Code - 2021 Project under Shubham Lohiya
+This repository contains the code for my WnCC Summer of Code - 2021 Project under [Shubham Lohiya](https://github.com/shubhlohiya)
 
 In this project, we are building a snake game from scratch, and will be implementing basic Reinforcement Learning techniques to help the snake master the game and get really high scores.
 ___
