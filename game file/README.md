@@ -28,3 +28,7 @@ The controls for the game are quite simple:
 |&#8593;|To make the snake go up|
 |&#8594;|To make the snake go right|
 |&#8595;|To make the snake go down|
+
+This is how The Snake Game looks:
+
+<img width="491" alt="Screenshot 2021-07-19 at 12 37 42 PM" src="https://user-images.githubusercontent.com/81500272/126117887-78b88e89-a1f6-435b-b320-09159c8b427f.png">
