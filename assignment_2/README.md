@@ -9,6 +9,14 @@ The update is made according to the following rule/pseudocode and the stopping c
 
 <img src="https://imgur.com/u7fb9OM.jpg" alt_text="Value Iteration Pseudocode" width="700">
 
+I have created a python file `planner.py` which accepts the following command-line arguments:
+* `--mdp` followed by the path to the MDP (examples present [here](data/mdp))
+* `--algorithm` followed by one of **vi, hpi, lp**
+
+Examples of usage (invocation from the same directory):
+```bash
+  python planner.py --mdp /data/mdp-4.txt --algorithm vi
+```
 ---
 
 # TASK 2
@@ -23,3 +31,30 @@ Solving the above MDP will give us the policy and then we can follow that path t
 <br />
 <br />
 I took Gamma to be 0.999 because if we take it to be 1 and suppose that we have a loop of 1 around a particular 0 cell, then while calculating the value function it will not converge. So we can take the value of gamma slightly off by 1.
+
+The python file `encoder.py` accepts the command-line argument `--grid` followed by the path to the maze (examples present [here](data/maze)) and prints the encoded MDP.
+
+The python file `decoder.py` accepts the following command-line arguments:
+* `--grid` followed by the path to the maze
+* `--value_policy` followed by the optimal policy
+
+and prints the shortest path.
+
+Examples of usage:
+```bash
+python encoder.py --grid gridfile > mdpfile
+python planner.py --mdp mdpfile --algorithm vi > value_and_policy_file
+python decoder.py --grid gridfile --value_policy value_and_policy_file > pathfile
+```
+
+The maze can be visualized using:
+```bash
+python visualize.py gridfile
+```
+
+The shortest path can be visualized using:
+```bash
+python visualize.py gridfile pathfile
+```
+
+[Reference to Original Assignment](https://www.cse.iitb.ac.in/~shivaram/teaching/old/cs747-a2020/pa-2/programming-assignment-2.html)
