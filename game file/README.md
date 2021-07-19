@@ -32,3 +32,7 @@ The controls for the game are quite simple:
 This is how The Snake Game looks:
 
 <img width="491" alt="Screenshot 2021-07-19 at 12 37 42 PM" src="https://user-images.githubusercontent.com/81500272/126117887-78b88e89-a1f6-435b-b320-09159c8b427f.png">
+
+### Credits
+
+I've recreated the snake game by Clear Code which you can find on GitHub, [here](github.com/clear-code-projects/Snake) and on his YouTube channel, [here](https://www.youtube.com/watch?v=QFvqStqPCRU)
